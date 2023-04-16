@@ -6,12 +6,12 @@ import {getParsedChildItemFromStorage} from 'utils/hooks/useLocationState';
 const LOCATION_STATE_KEY = 'locationState';
 
 const RequireParam = ({children, isLocationStateRequire, redirectTo}) => {
+  const {id} = useParams();
   if (!isLocationStateRequire) {
     return children;
   }
 
   try {
-    const {id} = useParams();
     const hasStoredParam = !!(
       getParsedChildItemFromStorage(localStorage, LOCATION_STATE_KEY, id) ||
       sessionStorage.getItem(id)
